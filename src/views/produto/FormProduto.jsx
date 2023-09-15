@@ -3,23 +3,24 @@ import React, { useState } from "react";
 import InputMask from 'react-input-mask';
 import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
 import MenuSistema from '../../MenuSistema';
+export default function FormProduto () {
 
-export default function FormCliente () {
-
-    const [nome, setNome] = useState();
-    const [cpf, setCpf] = useState();
-    const [dataNascimento, setDataNascimento] = useState();
-    const [foneCelular, setFoneCelular] = useState();
-    const [foneFixo, setFoneFixo] = useState();
+    const [titulo, setTitulo] = useState();
+    const [codigodoproduto, setCodigoDoProduto] = useState();
+    const [descricao, setDescricao] = useState();
+    const [valorunitario, setValorUnitario] = useState();
+    const [tempodeentregaminimoemminutos, setTempodeEntregaMinimoEmMinutos] = useState();
+    const [tempodeentregamaximoemminutos, setTempoDeEntregaMaximoEmMinutos] = useState();
 
     function salvar() {
 
 		let clienteRequest = {
-		     nome: nome,
-		     cpf: cpf,
-		     dataNascimento: dataNascimento,
-		     foneCelular: foneCelular,
-		     foneFixo: foneFixo
+		     titulo:titulo,
+		     codigodoproduto: codigodoproduto,
+		     descricao: descricao,
+		     valorunitarior: valorunitario,
+             tempodeentregaminimoemminutos: tempodeentregaminimoemminutos,
+		     tempodeentregamaximoemminutos: tempodeentregamaximoemminutos,
 		}
 	
 		axios.post("http://localhost:8082/api/cliente", clienteRequest)
@@ -31,13 +32,12 @@ export default function FormCliente () {
 		})
 	}
 
- 
 
     return (
 
         <div>
-              <MenuSistema />
- 
+ <MenuSistema />
+
             <div style={{marginTop: '3%'}}>
 
                 <Container textAlign='justified' >
@@ -55,21 +55,21 @@ export default function FormCliente () {
                                 <Form.Input
                                     required
                                     fluid
-                                    label='Nome'
+                                    label='Titulo'
                                     maxLength="100"
-                                    value={nome}
-			                        onChange={e => setNome(e.target.value)}
+                                    value={titulo}
+			                        onChange={e => setTitulo(e.target.value)}
                                 />
 
                                 <Form.Input
                                     required
                                     fluid
-                                    label='CPF'>
+                                    label='Código do Produto'>
                                     <InputMask
                                         required
-                                        mask="999.999.999-99"
-                                        value={cpf}
-				                        onChange={e => setCpf(e.target.value)} 
+                                        mask="Informe o código do produto"
+                                        value={codigodoproduto}
+				                        onChange={e => setCodigoDoProduto(e.target.value)} 
                                         />
                 
                                 </Form.Input>
@@ -80,39 +80,52 @@ export default function FormCliente () {
 
                                 <Form.Input
                                     fluid
-                                    label='Fone Celular'
+                                    label='Descrição'
                                     width={6}>
                                     <InputMask 
-                                        mask="(99) 9999.9999"
-                                        value={foneCelular}
-				                        onChange={e => setFoneCelular(e.target.value)}
+                                        mask="Informe a descrição do produto"
+                                        value={descricao}
+				                        onChange={e => setDescricao(e.target.value)}
+                                    /> 
+                                </Form.Input>
+                            
+                                <Form.Input
+                                    fluid
+                                    label='Valor Unitário'
+                                    width={6}>
+                                    <InputMask 
+                                        mask="55481"
+                                        value={valorunitario}
+				                        onChange={e => setValorUnitario(e.target.value)}
                                     /> 
                                 </Form.Input>
 
                                 <Form.Input
                                     fluid
-                                    label='Fone Fixo'
-                                    width={6}>
-                                    <InputMask 
-                                        mask="(99) 9999.9999"
-                                        value={foneFixo}
-				                        onChange={e => setFoneFixo(e.target.value)}
-                                    /> 
-                                </Form.Input>
-
-                                <Form.Input
-                                    fluid
-                                    label='Data Nascimento'
+                                    label='Tempo de entrega minimo em minutos'
                                     width={6}
                                 >
                                     <InputMask 
-                                        mask="99/99/9999" 
+                                        mask="541475" 
                                         maskChar={null}
-                                        placeholder="Ex: 20/03/1985"
-                                        value={dataNascimento}
-				                        onChange={e => setDataNascimento(e.target.value)}
+                                        value={tempodeentregaminimoemminutos}
+				                        onChange={e => setTempodeEntregaMinimoEmMinutos(e.target.value)}
                                     /> 
                                 </Form.Input>
+
+                                <Form.Input
+                                    fluid
+                                    label='Tempo de entrega maximo em minutos'
+                                    width={6}
+                                >
+                                    <InputMask 
+                                        mask="0" 
+                                        maskChar={null}
+                                        value={tempodeentregamaximoemminutos}
+				                        onChange={e => setTempoDeEntregaMaximoEmMinutos(e.target.value)}
+                                    /> 
+                                </Form.Input>
+
 
                             </Form.Group>
                         
@@ -152,7 +165,7 @@ export default function FormCliente () {
                 </Container>
             </div>
         </div>
-        
+
     );
 
 }
