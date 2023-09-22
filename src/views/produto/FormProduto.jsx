@@ -23,7 +23,7 @@ export default function FormProduto () {
 		     tempodeentregamaximoemminutos: tempodeentregamaximoemminutos,
 		}
 	
-		axios.post("http://localhost:8082/api/cliente", clienteRequest)
+		axios.post("http://localhost:8080/api/cliente", clienteRequest)
 		.then((response) => {
 		     console.log('Cliente cadastrado com sucesso.')
 		})
@@ -76,7 +76,7 @@ export default function FormProduto () {
 
                             </Form.Group>
                             
-                            <Form.Group>
+                           
 
                                 <Form.Input
                                     fluid
@@ -88,7 +88,7 @@ export default function FormProduto () {
 				                        onChange={e => setDescricao(e.target.value)}
                                     /> 
                                 </Form.Input>
-                            
+                                <Form.Group>
                                 <Form.Input
                                     fluid
                                     label='Valor Unitário'
@@ -126,8 +126,8 @@ export default function FormProduto () {
                                     /> 
                                 </Form.Input>
 
-
-                            </Form.Group>
+                                </Form.Group>
+                            
                         
                         </Form>
                         
