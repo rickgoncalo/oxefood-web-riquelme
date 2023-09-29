@@ -43,7 +43,6 @@ export default function FormEntregador () {
 
                             </Form.Group>
                             
-                    
                                 <Form.Input
                                     fluid
                                     label='Fone Celular'
@@ -68,14 +67,12 @@ export default function FormEntregador () {
                                     width={6}
                                 >
                                     <InputMask 
-                                        mask="99/99/9999" 
+                                        mask="10/04/9999" 
                                         maskChar={null}
                                         placeholder="Ex: 20/03/1957"
                                     /> 
                                 </Form.Input>
 
-                           
-                        
                         </Form>
                         
                         <div style={{marginTop: '4%'}}>
