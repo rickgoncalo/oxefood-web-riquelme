@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { formToJSON } from "axios";
 import React, { useState } from "react";
 import InputMask from 'react-input-mask';
 import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
@@ -11,6 +11,8 @@ export default function FormProduto () {
     const [valorunitario, setValorUnitario] = useState();
     const [tempodeentregaminimoemminutos, setTempodeEntregaMinimoEmMinutos] = useState();
     const [tempodeentregamaximoemminutos, setTempoDeEntregaMaximoEmMinutos] = useState();
+    const [menuFiltro, setMenuFiltro] = useState();
+
 
     function salvar() {
 
@@ -21,6 +23,7 @@ export default function FormProduto () {
 		     valorunitarior: valorunitario,
              tempodeentregaminimoemminutos: tempodeentregaminimoemminutos,
 		     tempodeentregamaximoemminutos: tempodeentregamaximoemminutos,
+         
 		}
 	
 		axios.post("http://localhost:8080/api/cliente", clienteRequest)
@@ -31,8 +34,7 @@ export default function FormProduto () {
 		     console.log('Erro ao incluir o um cliente.')
 		})
 	}
-
-
+ 
     return (
 
         <div>
@@ -129,7 +131,7 @@ export default function FormProduto () {
                             
                         
                         </Form>
-                        
+
                         <div style={{marginTop: '4%'}}>
 
                             <Button
@@ -166,5 +168,4 @@ export default function FormProduto () {
         </div>
 
     );
-
-}
+    }
